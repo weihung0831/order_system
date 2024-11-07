@@ -1,0 +1,35 @@
+# 以 user-specific files
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 以 auto-generated files
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.log
+
+# NuGet 資料夾
+packages/
+.nuget/
+
+# 排除本地設定檔
+*.csproj.user
+*.vcxproj.user
+
+# Mac 系統產生的文件
+.DS_Store
+
+# Rider 和 ReSharper 產生的文件
+.idea/
+*.sln.iml
+*.dotSettings.user
+_ReSharper*/
+
+# 構建資料夾
+artifacts/
