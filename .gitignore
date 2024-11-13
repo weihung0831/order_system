@@ -33,3 +33,8 @@ _ReSharper*/
 
 # 構建資料夾
 artifacts/
+
+# SQLite 資料庫
+order_system.db
+order_system.db-shm
+order_system.db-wal
