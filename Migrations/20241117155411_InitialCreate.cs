@@ -14,6 +14,23 @@ namespace order_system.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "MealSelections",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MenuId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SelectionDate = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MealSelections", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Menus",
                 columns: table => new
                 {
@@ -68,35 +85,6 @@ namespace order_system.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "MealSelections",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    MenuId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SelectionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MealSelections", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MealSelections_Menus_MenuId",
-                        column: x => x.MenuId,
-                        principalTable: "Menus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MealSelections_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Name" },
@@ -111,28 +99,18 @@ namespace order_system.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "Password", "RoleId", "UpdatedAt", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470), "admin@example.com", "123456", 1, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470), "admin" },
-                    { 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8520), "user0@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8530), "user0" },
-                    { 3, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540), "user1@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540), "user1" },
-                    { 4, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560), "user2@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560), "user2" },
-                    { 5, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570), "user3@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570), "user3" },
-                    { 6, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600), "user4@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600), "user4" },
-                    { 7, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610), "user5@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610), "user5" },
-                    { 8, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620), "user6@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620), "user6" },
-                    { 9, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640), "user7@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640), "user7" },
-                    { 10, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660), "user8@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660), "user8" },
-                    { 11, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670), "user9@example.com", "123456", 2, new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670), "user9" }
+                    { 1, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6010), "admin@example.com", "123456", 1, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6010), "admin" },
+                    { 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6050), "user0@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6050), "user0" },
+                    { 3, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6060), "user1@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6060), "user1" },
+                    { 4, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6080), "user2@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6080), "user2" },
+                    { 5, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6090), "user3@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6090), "user3" },
+                    { 6, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6120), "user4@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6120), "user4" },
+                    { 7, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6130), "user5@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6130), "user5" },
+                    { 8, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6150), "user6@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6150), "user6" },
+                    { 9, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6160), "user7@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6160), "user7" },
+                    { 10, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6180), "user8@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6180), "user8" },
+                    { 11, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6190), "user9@example.com", "123456", 2, new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6190), "user9" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MealSelections_MenuId",
-                table: "MealSelections",
-                column: "MenuId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MealSelections_UserId",
-                table: "MealSelections",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",

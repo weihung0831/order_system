@@ -11,7 +11,7 @@ using order_system.Data;
 namespace order_system.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241117144227_InitialCreate")]
+    [Migration("20241117155411_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -32,7 +32,8 @@ namespace order_system.Migrations
                     b.Property<int>("MenuId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("SelectionDate")
+                    b.Property<string>("SelectionDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -42,10 +43,6 @@ namespace order_system.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MenuId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("MealSelections");
                 });
@@ -161,132 +158,113 @@ namespace order_system.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6010),
                             Email = "admin@example.com",
                             Password = "123456",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6010),
                             Username = "admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8520),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6050),
                             Email = "user0@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8530),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6050),
                             Username = "user0"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6060),
                             Email = "user1@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6060),
                             Username = "user1"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6080),
                             Email = "user2@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6080),
                             Username = "user2"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6090),
                             Email = "user3@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6090),
                             Username = "user3"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6120),
                             Email = "user4@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6120),
                             Username = "user4"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6130),
                             Email = "user5@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6130),
                             Username = "user5"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6150),
                             Email = "user6@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6150),
                             Username = "user6"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6160),
                             Email = "user7@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6160),
                             Username = "user7"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6180),
                             Email = "user8@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6180),
                             Username = "user8"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670),
+                            CreatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6190),
                             Email = "user9@example.com",
                             Password = "123456",
                             RoleId = 2,
-                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670),
+                            UpdatedAt = new DateTime(2024, 11, 17, 23, 54, 11, 430, DateTimeKind.Local).AddTicks(6190),
                             Username = "user9"
                         });
-                });
-
-            modelBuilder.Entity("order_system.Models.MealSelection", b =>
-                {
-                    b.HasOne("order_system.Models.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("order_system.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Menu");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("order_system.Models.User", b =>

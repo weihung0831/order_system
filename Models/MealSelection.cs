@@ -10,9 +10,14 @@ public class MealSelection
     public required int UserId { get; set; }
     [ForeignKey("Menu")]
     public required int MenuId { get; set; }
-    public required DateTime SelectionDate { get; set; }
+    public required string SelectionDate { get; set; }
     public required DateTime CreatedAt { get; set; } = DateTime.Now;
     public required DateTime UpdatedAt { get; set; } = DateTime.Now;
-    public required User User { get; set; }
-    public required Menu Menu { get; set; }
+}
+
+public class MealSelectionDto
+{
+    public required int UserId { get; set; }
+    public required int MenuId { get; set; }
+    public required int SelectionDate { get; set; }
 }

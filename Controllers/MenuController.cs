@@ -13,7 +13,7 @@ public class MenuController(MenuService menuService, AuthService authService) : 
 
     [HttpPost("admin/create")]
     [SwaggerOperation(Summary = "新增菜單")]
-    [SwaggerResponse(200, "Menu created", typeof(Menu))]
+    [SwaggerResponse(200, "Menu created successfully", typeof(Menu))]
     [SwaggerResponse(401, "No session data found")]
     [SwaggerResponse(400, "Failed to create menu")]
     public IActionResult Create([FromBody] MenuDto menuDto)
@@ -23,7 +23,10 @@ public class MenuController(MenuService menuService, AuthService authService) : 
         try
         {
             var menu = _menuService.CreateMenu(menuDto);
-            return Ok(menu);
+            return Ok(new { 
+                message = "Menu created successfully", 
+                menu 
+            });
         }
         catch (Exception ex)
         {
@@ -83,7 +86,10 @@ public class MenuController(MenuService menuService, AuthService authService) : 
         try
         {
             var menus = _menuService.GetMenus(page, pageSize, isThisWeek: true);
-            return Ok(new { message = "Success get menu list", list = menus });
+            return Ok(new { 
+                message = "Success get menu list", 
+                menus 
+            });
         }
         catch (Exception ex)
         {

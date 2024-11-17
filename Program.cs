@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // add services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<MenuService>();
+builder.Services.AddScoped<MealSelectionService>();
 
 // add distributed memory cache
 builder.Services.AddDistributedMemoryCache();
