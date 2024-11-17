@@ -6,10 +6,10 @@ namespace order_system.Data;
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<MealSelection> MealSelections { get; set; }
-    public DbSet<Menu> Menus { get; set; }
+    public required DbSet<User> Users { get; set; }
+    public required DbSet<Role> Roles { get; set; }
+    public required DbSet<MealSelection> MealSelections { get; set; }
+    public required DbSet<Menu> Menus { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()
@@ -23,7 +23,7 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<User>().HasData(
             new User { 
-                Id = 1, 
+                Id = 1,
                 Username = "admin", 
                 Password = "123456", 
                 Email = "admin@example.com",
@@ -32,5 +32,19 @@ public class AppDbContext : DbContext
                 UpdatedAt = DateTime.Now,
             }
         );
+
+        for (int i = 0; i < 10; i++) {
+            modelBuilder.Entity<User>().HasData(
+                new User { 
+                    Id = i + 2,
+                    Username = $"user{i}", 
+                    Password = "123456", 
+                    Email = $"user{i}@example.com", 
+                    RoleId = 2, 
+                    CreatedAt = DateTime.Now, 
+                    UpdatedAt = DateTime.Now 
+                }
+            );
+        }
     }
 }

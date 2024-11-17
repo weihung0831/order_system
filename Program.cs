@@ -8,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// add services
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<MenuService>();
+
+// add distributed memory cache
 builder.Services.AddDistributedMemoryCache();
 
 // setting session

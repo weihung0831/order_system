@@ -53,9 +53,6 @@ namespace order_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("AvailableDate")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -63,6 +60,9 @@ namespace order_system.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -158,12 +158,112 @@ namespace order_system.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 11, 14, 1, 36, 41, 91, DateTimeKind.Local).AddTicks(5410),
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470),
                             Email = "admin@example.com",
                             Password = "123456",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2024, 11, 14, 1, 36, 41, 91, DateTimeKind.Local).AddTicks(5410),
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8470),
                             Username = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8520),
+                            Email = "user0@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8530),
+                            Username = "user0"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540),
+                            Email = "user1@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8540),
+                            Username = "user1"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560),
+                            Email = "user2@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8560),
+                            Username = "user2"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570),
+                            Email = "user3@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8570),
+                            Username = "user3"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600),
+                            Email = "user4@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8600),
+                            Username = "user4"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610),
+                            Email = "user5@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8610),
+                            Username = "user5"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620),
+                            Email = "user6@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8620),
+                            Username = "user6"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640),
+                            Email = "user7@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8640),
+                            Username = "user7"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660),
+                            Email = "user8@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8660),
+                            Username = "user8"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670),
+                            Email = "user9@example.com",
+                            Password = "123456",
+                            RoleId = 2,
+                            UpdatedAt = new DateTime(2024, 11, 17, 22, 42, 27, 534, DateTimeKind.Local).AddTicks(8670),
+                            Username = "user9"
                         });
                 });
 

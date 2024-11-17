@@ -13,7 +13,15 @@ public class Menu
     public required string Description { get; set; }
     [Column(TypeName = "decimal(10, 2)")]
     public required decimal Price { get; set; }
-    public required DateTime AvailableDate { get; set; }
+    public required bool IsAvailable { get; set; } = true;
     public required DateTime CreatedAt { get; set; } = DateTime.Now;
     public required DateTime UpdatedAt { get; set; } = DateTime.Now;
+}
+
+public class MenuDto
+{
+    public required string Name { get; set; }
+    public required string Description { get; set; }
+    public required decimal Price { get; set; }
+    public required bool IsAvailable { get; set; } = true;
 }
