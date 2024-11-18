@@ -19,6 +19,8 @@ public class AuthController(AuthService authService) : Controller
     [SwaggerResponse(401, "Login failed")]
     public IActionResult AdminLogin([FromBody] AdminDto adminDto)
     {
+        if (_authService.IsAdminSession(HttpContext)) return Unauthorized(new { message = "Already logged in" });
+
         var user = _authService.ValidateAdmin(adminDto.Username, adminDto.Password);
         if (user == null) return Unauthorized(new { message = "Login failed" });
 
@@ -58,6 +60,8 @@ public class AuthController(AuthService authService) : Controller
     [SwaggerResponse(401, "Login failed")]
     public IActionResult UserLogin([FromBody] UserDto userDto)
     {
+        if (_authService.IsUserSession(HttpContext)) return Unauthorized(new { message = "Already logged in" });
+
         var user = _authService.ValidateUser(userDto.Email, userDto.Password);
         if (user == null) return Unauthorized(new { message = "Login failed" });
 
