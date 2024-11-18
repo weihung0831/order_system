@@ -4,6 +4,12 @@ using order_system.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// setting cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
 // setting sqlite database
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -34,6 +40,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+// use cors
+app.UseCors("AllowAllOrigins");
 
 // 啟用 session
 app.UseSession();
